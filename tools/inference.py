@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
     # Load the model
     model = CovidAidAttend(args.combine_pneumonia)
-    model.load_state_dict(torch.load(args.checkpoint))
+    model.load_state_dict(torch.load(args.checkpoint, map_location={'cuda:0':'cpu'}))
     
     if D_COUNT>1:
         print("Using", torch.cuda.device_count(), "GPUs!")
